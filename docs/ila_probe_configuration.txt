@@ -1,0 +1,155 @@
+# ============================================================
+# ADD DDS -> FIFO DEBUG PROBES
+# ============================================================
+# probe8 = FIFO input data
+set_property port_width 16 [get_debug_ports u_ila_0/probe8]
+connect_debug_port u_ila_0/probe8 \
+    [get_nets {u_core/fifo_din[*]}]
+# probe9 = FIFO write enable
+create_debug_port u_ila_0 probe
+u_ila_0/probe9
+set_property port_width 1 [get_debug_ports u_ila_0/probe9]
+connect_debug_port u_ila_0/probe9 \
+    [get_nets {u_core/fifo_wr_en}]
+# Verify the debug configuration
+report_debug_core u_ila_0
+ERROR: [Common 17-165] Too many positional options when parsing 'u_ila_0', please type 'report_debug_core -help' for usage info.
+report_debug_core
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+---------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2024.2 (win64) Build 5239630 Fri Nov 08 22:35:27 MST 2024
+| Date         : Tue Oct  6 16:43:58 2026
+| Host         : REVANTH running 64-bit major release  (build 9200)
+| Design       : top_wrapper
+| Device       : xc7z020clg400-1
+| Speed File   : -1
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+Debug Core Information
+
+Table of Contents
+-----------------
+1. Debug Cores
+1.1 dbg_hub: (labtools_xsdbm_v3, black box, inserted)
+1.2 u_ila_0: (labtools_ila_v6, black box, inserted)
+
+1. Debug Cores
+--------------
+
+1.1 dbg_hub: (labtools_xsdbm_v3, black box, inserted)
+-----------------------------------------------------
+
+Parameter Data for Debug Core "dbg_hub"
++----------------------+-----------+
+| Parameter            | Value     |
++----------------------+-----------+
+| C_CLK_INPUT_FREQ_HZ  | 300000000 |
++----------------------+-----------+
+| C_ENABLE_CLK_DIVIDER | false     |
++----------------------+-----------+
+| C_USER_SCAN_CHAIN    | 1         |
++----------------------+-----------+
+
+
+Channel Data for Debug Core "dbg_hub"
++---------------+---------+---------------+------------------+----------+------------+------------------+
+| Port Name     | Port    | Port Spec     | Channel Name     | Net Type | MARK_DEBUG | Net Name         |
+|               | Type    |               |                  |          |            |                  |
++---------------+---------+---------------+------------------+----------+------------+------------------+
+| clk           | input   | clk           | clk[0]           | signal   | false      | clk_IBUF_BUFG    |
++---------------+---------+---------------+------------------+----------+------------+------------------+
+
+
+Peripherals Connected to Debug Hub 'dbg_hub' (1 Peripherals):
++-------+----------+---------------+
+| Index | Type     | Instance Name |
++-------+----------+---------------+
+| 0     | ila_v6_2 | u_ila_0       |
++-------+----------+---------------+
+
+
+1.2 u_ila_0: (labtools_ila_v6, black box, inserted)
+---------------------------------------------------
+
+Parameter Data for Debug Core "u_ila_0"
++-----------------------+-------+
+| Parameter             | Value |
++-----------------------+-------+
+| ALL_PROBE_SAME_MU     | true  |
++-----------------------+-------+
+| ALL_PROBE_SAME_MU_CNT | 1     |
++-----------------------+-------+
+| C_ADV_TRIGGER         | false |
++-----------------------+-------+
+| C_DATA_DEPTH          | 4096  |
++-----------------------+-------+
+| C_EN_STRG_QUAL        | false |
++-----------------------+-------+
+| C_INPUT_PIPE_STAGES   | 0     |
++-----------------------+-------+
+| C_TRIGIN_EN           | false |
++-----------------------+-------+
+| C_TRIGOUT_EN          | false |
++-----------------------+-------+
+
+
+Channel Data for Debug Core "u_ila_0"
++---------------+---------+---------------+--------------------------------+------------------+----------+------------+------------------+
+| Port Name     | Port    | Port Spec     | Parameters                     | Channel Name     | Net Type | MARK_DEBUG | Net Name         |
+|               | Type    |               |                                |                  |          |            |                  |
++---------------+---------+---------------+--------------------------------+------------------+----------+------------+------------------+
+| clk           | input   | clk           |                                | clk[0]           | signal   | false      | clk_IBUF_BUFG    |
++---------------+---------+---------------+--------------------------------+------------------+----------+------------+------------------+
+| probe0        | input   | probe         | PROBE_TYPE=DATA_AND_TRIGGER    | probe0[0]        | signal   | false      | fifo_dout[0]     |
+|               |         |               |                                | probe0[1]        | signal   | false      | fifo_dout[10]    |
+|               |         |               |                                | probe0[2]        | signal   | false      | fifo_dout[11]    |
+|               |         |               |                                | probe0[3]        | signal   | false      | fifo_dout[12]    |
+|               |         |               |                                | probe0[4]        | signal   | false      | fifo_dout[13]    |
+|               |         |               |                                | probe0[5]        | signal   | false      | fifo_dout[14]    |
+|               |         |               |                                | probe0[6]        | signal   | false      | fifo_dout[15]    |
+|               |         |               |                                | probe0[7]        | signal   | false      | fifo_dout[1]     |
+|               |         |               |                                | probe0[8]        | signal   | false      | fifo_dout[2]     |
+|               |         |               |                                | probe0[9]        | signal   | false      | fifo_dout[3]     |
+|               |         |               |                                | probe0[10]       | signal   | false      | fifo_dout[4]     |
+|               |         |               |                                | probe0[11]       | signal   | false      | fifo_dout[5]     |
+|               |         |               |                                | probe0[12]       | signal   | false      | fifo_dout[6]     |
+|               |         |               |                                | probe0[13]       | signal   | false      | fifo_dout[7]     |
+|               |         |               |                                | probe0[14]       | signal   | false      | fifo_dout[8]     |
+|               |         |               |                                | probe0[15]       | signal   | false      | fifo_dout[9]     |
++---------------+---------+---------------+--------------------------------+------------------+----------+------------+------------------+
+| probe1        | input   | probe         | PROBE_TYPE=DATA_AND_TRIGGER    | probe1[0]        | signal   | false      | fifo_rd_en       |
++---------------+---------+---------------+--------------------------------+------------------+----------+------------+------------------+
+| probe2        | input   | probe         | PROBE_TYPE=DATA_AND_TRIGGER    | probe2[0]        | signal   | false      | spi_start        |
++---------------+---------+---------------+--------------------------------+------------------+----------+------------+------------------+
+| probe3        | input   | probe         | PROBE_TYPE=DATA_AND_TRIGGER    | probe3[0]        | signal   | false      | spi_busy         |
++---------------+---------+---------------+--------------------------------+------------------+----------+------------+------------------+
+| probe4        | input   | probe         | PROBE_TYPE=DATA_AND_TRIGGER    | probe4[0]        | signal   | false      | spi_done         |
++---------------+---------+---------------+--------------------------------+------------------+----------+------------+------------------+
+| probe5        | input   | probe         | PROBE_TYPE=DATA_AND_TRIGGER    | probe5[0]        | signal   | false      | spi_cs_OBUF      |
++---------------+---------+---------------+--------------------------------+------------------+----------+------------+------------------+
+| probe6        | input   | probe         | PROBE_TYPE=DATA_AND_TRIGGER    | probe6[0]        | signal   | false      | spi_sclk_OBUF    |
++---------------+---------+---------------+--------------------------------+------------------+----------+------------+------------------+
+| probe7        | input   | probe         | PROBE_TYPE=DATA_AND_TRIGGER    | probe7[0]        | signal   | false      | spi_mosi_OBUF    |
++---------------+---------+---------------+--------------------------------+------------------+----------+------------+------------------+
+| probe8        | input   | probe         | PROBE_TYPE=DATA_AND_TRIGGER    | probe8[0]        | signal   | false      | fifo_din[0]      |
+|               |         |               |                                | probe8[1]        | signal   | false      | fifo_din[10]     |
+|               |         |               |                                | probe8[2]        | signal   | false      | fifo_din[11]     |
+|               |         |               |                                | probe8[3]        | signal   | false      | fifo_din[12]     |
+|               |         |               |                                | probe8[4]        | signal   | false      | fifo_din[13]     |
+|               |         |               |                                | probe8[5]        | signal   | false      | fifo_din[14]     |
+|               |         |               |                                | probe8[6]        | signal   | false      | fifo_din[15]     |
+|               |         |               |                                | probe8[7]        | signal   | false      | fifo_din[1]      |
+|               |         |               |                                | probe8[8]        | signal   | false      | fifo_din[2]      |
+|               |         |               |                                | probe8[9]        | signal   | false      | fifo_din[3]      |
+|               |         |               |                                | probe8[10]       | signal   | false      | fifo_din[4]      |
+|               |         |               |                                | probe8[11]       | signal   | false      | fifo_din[5]      |
+|               |         |               |                                | probe8[12]       | signal   | false      | fifo_din[6]      |
+|               |         |               |                                | probe8[13]       | signal   | false      | fifo_din[7]      |
+|               |         |               |                                | probe8[14]       | signal   | false      | fifo_din[8]      |
+|               |         |               |                                | probe8[15]       | signal   | false      | fifo_din[9]      |
++---------------+---------+---------------+--------------------------------+------------------+----------+------------+------------------+
+| probe9        | input   | probe         | PROBE_TYPE=DATA_AND_TRIGGER    | probe9[0]        | signal   | false      | fifo_wr_en       |
++---------------+---------+---------------+--------------------------------+------------------+----------+------------+------------------+
+
+
+report_debug_core: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.003 . Memory (MB): peak = 3726.754 ; gain = 0.00
