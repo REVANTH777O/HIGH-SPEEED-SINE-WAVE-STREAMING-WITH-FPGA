@@ -1,4 +1,4 @@
-# DDS → Asynchronous FIFO → SPI on Zynq-7020
+# DDS → Asynchronous FIFO → SPI_TX -> SPI_RX -> SINEWAVE_RECONSTRUCTION on Zynq-7020
 
 A hardware-verified FPGA data path implementing a Xilinx DDS Compiler driven by a 50 MHz PL clock, a 16-bit asynchronous FIFO, and a 16-bit SPI master/slave loopback.
 
